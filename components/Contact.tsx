@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "Yb33391f2-bcb7-471d-a4b5-076d32f8c8fc",
+          access_key: "b33391f2-bcb7-471d-a4b5-076d32f8c8fc",
           name: formState.name,
           email: formState.email,
           message: formState.message,
