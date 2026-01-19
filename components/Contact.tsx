@@ -5,31 +5,46 @@ const Contact: React.FC = () => {
   const { t } = useLanguage();
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // --- REPLACE YOUR OLD handleSubmit WITH THIS ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // This sends the data to Web3Forms in the background
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: "Yb33391f2-bcb7-471d-a4b5-076d32f8c8fc", // PUT YOUR KEY HERE
-        name: formState.name,
-        email: formState.email,
-        message: formState.message,
-      }),
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "Yb33391f2-bcb7-471d-a4b5-076d32f8c8fc",
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          subject: "New Inquiry from Orbis Website",
+          from_name: "Orbis Accounting Web-Form",
+          botcheck: "" // Honeypot to prevent spam/429 errors
+        }),
+      });
 
-    const result = await response.json();
-    if (result.success) {
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', message: '' }); // Clear the form
-      setTimeout(() => setIsSubmitted(false), 5000);
+      const result = await response.json();
+      
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', message: '' });
+        // Automatically hide success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        // If Web3Forms returns an error (like rate limit), show it
+        alert("Submission failed: " + (result.message || "Please try again later."));
+      }
+    } catch (error) {
+      console.error("Form error:", error);
+      alert("Network error. Please check your connection or try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -66,14 +81,16 @@ const Contact: React.FC = () => {
                 <p className="text-gray-400">{t.contact.successDesc}</p>
               </div>
             ) : (
-              // --- ENSURE YOUR FORM USES THE handleSubmit ABOVE ---
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field (hidden from users) */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                 <div>
                   <label className="block text-sm font-bold mb-2 uppercase tracking-wide opacity-60">{t.contact.formName}</label>
                   <input 
                     required
                     type="text" 
-                    name="name" // IMPORTANT
+                    name="name"
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     placeholder={t.contact.placeholderName}
                     value={formState.name}
@@ -85,7 +102,7 @@ const Contact: React.FC = () => {
                   <input 
                     required
                     type="email" 
-                    name="email" // IMPORTANT
+                    name="email"
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     placeholder={t.contact.placeholderEmail}
                     value={formState.email}
@@ -95,7 +112,8 @@ const Contact: React.FC = () => {
                 <div>
                   <label className="block text-sm font-bold mb-2 uppercase tracking-wide opacity-60">{t.contact.formHelp}</label>
                   <textarea 
-                    name="message" // IMPORTANT
+                    name="message"
+                    required
                     rows={4}
                     className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                     placeholder={t.contact.placeholderMessage}
@@ -103,8 +121,12 @@ const Contact: React.FC = () => {
                     onChange={e => setFormState({...formState, message: e.target.value})}
                   />
                 </div>
-                <button type="submit" className="w-full py-4 bg-primary text-gray-900 font-extrabold rounded-xl hover:brightness-110 transition-all shadow-lg shadow-primary/20">
-                  {t.contact.formBtn}
+                <button 
+                  disabled={isSubmitting}
+                  type="submit" 
+                  className={`w-full py-4 bg-primary text-gray-900 font-extrabold rounded-xl transition-all shadow-lg shadow-primary/20 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:brightness-110'}`}
+                >
+                  {isSubmitting ? "Sending..." : t.contact.formBtn}
                 </button>
               </form>
             )}
