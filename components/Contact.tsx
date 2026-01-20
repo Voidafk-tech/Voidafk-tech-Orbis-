@@ -8,7 +8,14 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Process form submission here (e.g., API call)
+    
     setIsSubmitted(true);
+    
+    // Clear the form fields after submission
+    setFormState({ name: '', email: '', message: '' });
+
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
@@ -22,26 +29,25 @@ const Contact: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
-                <a href="mailto:info@orbisaccounting.ca" className="text-sm font-medium hover:text-primary transition-colors">info@orbisaccounting.ca</a>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <div>
+                  <div className="text-sm text-gray-400">{t.contact.emailUs}</div>
+                  <div className="font-bold">hello@orbisaccounting.com</div>
                 </div>
-                <a href="tel:6042037799" className="text-sm font-medium hover:text-primary transition-colors">604-203-7799</a>
               </div>
             </div>
           </div>
-          
-          <div className="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700">
+
+          <div className="bg-gray-800 p-8 lg:p-12 rounded-3xl border border-gray-700 shadow-2xl">
             {isSubmitted ? (
-              <div className="h-96 flex flex-col items-center justify-center text-center space-y-4">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="text-center py-12 space-y-4 animate-in fade-in zoom-in duration-300">
+                <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto text-primary">
+                  <span className="material-icons-outlined text-4xl">check_circle</span>
                 </div>
-                <h3 className="text-2xl font-bold">{t.contact.success}</h3>
+                <h3 className="text-2xl font-bold">{t.contact.successTitle}</h3>
                 <p className="text-gray-400">{t.contact.successDesc}</p>
               </div>
             ) : (
