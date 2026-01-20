@@ -1,26 +1,23 @@
 import React from 'react';
-import { Page, useLanguage } from './App';
+import { Link } from 'react-router-dom';
+import { useLanguage, PAGE_TO_PATH } from './App';
 import { LogoGraphic } from './Navbar';
 
-interface FooterProps {
-  navigate: (page: Page) => void;
-}
-
-const Footer: React.FC<FooterProps> = ({ navigate }) => {
-  const { lang, t } = useLanguage();
+const Footer: React.FC = () => {
+  const { t } = useLanguage();
   
   return (
     <footer className="bg-background-light dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2 space-y-6">
-            <button 
-              className="cursor-pointer block outline-none text-left" 
-              onClick={() => navigate('home')}
+            <Link 
+              to="/"
+              className="cursor-pointer inline-block outline-none text-left" 
               aria-label="Back to home"
             >
               <LogoGraphic className="h-16 w-16" />
-            </button>
+            </Link>
             <p className="text-gray-400 max-w-sm">
               {t.footer.desc}
             </p>
@@ -28,18 +25,18 @@ const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <div>
             <h5 className="font-bold mb-6">{t.footer.quickLinks}</h5>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><button onClick={() => navigate('about')} className="hover:text-primary transition-colors text-left">{t.nav.about}</button></li>
-              <li><button onClick={() => navigate('services')} className="hover:text-primary transition-colors text-left">{t.nav.services}</button></li>
-              <li><button onClick={() => navigate('process')} className="hover:text-primary transition-colors text-left">{t.nav.process}</button></li>
-              <li><button onClick={() => navigate('growth')} className="hover:text-primary transition-colors text-left">{t.nav.growth}</button></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors text-left">{t.nav.services}</Link></li>
+              <li><Link to="/pricing" className="hover:text-primary transition-colors text-left">{t.nav.pricing}</Link></li>
+              <li><Link to="/process" className="hover:text-primary transition-colors text-left">{t.nav.process}</Link></li>
+              <li><Link to="/growth-strategy" className="hover:text-primary transition-colors text-left">{t.nav.growth}</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-bold mb-6">{t.footer.support}</h5>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><button onClick={() => navigate('contact')} className="hover:text-primary transition-colors text-left">{t.nav.contact}</button></li>
-              <li><button onClick={() => navigate('privacy')} className="hover:text-primary transition-colors text-left">{t.footer.privacy}</button></li>
-              <li><button onClick={() => navigate('terms')} className="hover:text-primary transition-colors text-left">{t.footer.terms}</button></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors text-left">{t.nav.contact}</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-primary transition-colors text-left">{t.footer.privacy}</Link></li>
+              <li><Link to="/terms-of-service" className="hover:text-primary transition-colors text-left">{t.footer.terms}</Link></li>
             </ul>
           </div>
         </div>

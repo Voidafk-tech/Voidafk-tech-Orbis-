@@ -28,17 +28,17 @@ const Contact: React.FC = () => {
           </div>
           
           <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
-            {/* Standard POST form for maximum reliability */}
+            {/* Standard POST to bypass network/CORS restrictions as requested */}
             <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
               
-              {/* Corrected Access Key (removed the "Y") */}
+              {/* Access Key */}
               <input type="hidden" name="access_key" value="b33391f2-bcb7-471d-a4b5-076d32f8c8fc" />
               
-              {/* Optional: Redirects user back to your site after success */}
-              <input type="hidden" name="redirect" value="https://orbisaccounting.ca/contact" />
-              
-              {/* Optional: Honeypot to prevent spam */}
+              {/* Anti-spam honeypot */}
               <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+              {/* Subject Line for Email */}
+              <input type="hidden" name="subject" value="New Inquiry from Orbis Accounting Website" />
 
               <div>
                 <label className="block text-sm font-bold mb-2 uppercase tracking-wide opacity-60">{t.contact.formName}</label>

@@ -1,12 +1,7 @@
 import React from 'react';
 import Contact from '../components/Contact';
-import { Page } from '../components/App';
 
-interface ContactPageProps {
-  navigate: (page: Page) => void;
-}
-
-const ContactPage: React.FC<ContactPageProps> = ({ navigate }) => {
+const ContactPage: React.FC = () => {
   return (
     <div className="py-20 animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

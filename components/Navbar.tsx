@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Page, useLanguage, PAGE_TO_PATH } from './App';
-
-interface NavbarProps {
-  navigate: (page: Page) => void;
-}
 
 export const LogoGraphic: React.FC<{ className?: string }> = ({ className = "h-10 w-10" }) => (
   <svg viewBox="0 0 100 100" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="45" fill="#82E05E" />
-    <circle cx="22" cy="50" r="14" fill="white" />
-    <circle cx="22" cy="50" r="7" fill="black" />
+    {/* Base Green Circle */}
+    <circle cx="50" cy="50" r="50" fill="#82E05E" />
+    
+    {/* Merged Black Interior: Center + Left Cutout */}
+    <circle cx="50" cy="50" r="32" fill="black" />
+    <circle cx="15" cy="50" r="21" fill="black" />
+    
+    {/* White Focal Dot */}
+    <circle cx="15" cy="50" r="9" fill="white" />
   </svg>
 );
 
-const Navbar: React.FC<NavbarProps> = ({ navigate }) => {
+const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
   const location = useLocation();
@@ -23,44 +25,38 @@ const Navbar: React.FC<NavbarProps> = ({ navigate }) => {
     { name: t.nav.services, page: 'services' },
     { name: t.nav.pricing, page: 'pricing' },
     { name: t.nav.process, page: 'process' },
-    { name: t.nav.about, page: 'about' },
   ];
 
   const toggleLanguage = () => {
     setLang(lang === 'en' ? 'zh' : 'en');
   };
 
-  const handleNavClick = (page: Page) => {
-    navigate(page);
-    setIsMenuOpen(false);
-  };
-
   return (
     <nav className="fixed w-full top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <button 
-            onClick={() => handleNavClick('home')}
+          <Link 
+            to="/"
             className="flex items-center gap-2 group outline-none" 
             aria-label="Home"
           >
             <LogoGraphic className="h-12 w-12 group-hover:scale-110 transition-transform" />
-          </button>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
               const isActive = location.pathname === PAGE_TO_PATH[link.page];
               return (
-                <button 
+                <Link 
                   key={link.page}
-                  onClick={() => handleNavClick(link.page)}
+                  to={PAGE_TO_PATH[link.page]}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
                     isActive ? 'text-primary underline underline-offset-4 decoration-2' : 'text-gray-600 dark:text-gray-300'
                   }`}
                 >
                   {link.name}
-                </button>
+                </Link>
               );
             })}
             
@@ -71,12 +67,12 @@ const Navbar: React.FC<NavbarProps> = ({ navigate }) => {
               {lang === 'en' ? '中文' : 'EN'}
             </button>
 
-            <button 
-              onClick={() => handleNavClick('contact')}
+            <Link 
+              to="/contact"
               className="px-5 py-2.5 bg-primary text-gray-900 font-bold rounded-full hover:brightness-110 transition-all text-sm shadow-sm"
             >
               {t.nav.consultation}
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -103,31 +99,34 @@ const Navbar: React.FC<NavbarProps> = ({ navigate }) => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-background-light dark:bg-background-dark border-b border-gray-100 dark:border-gray-800 px-4 py-6 space-y-4 shadow-xl">
-          <button 
+          <Link 
+            to="/"
             className={`block w-full text-left text-lg font-medium hover:text-primary transition-colors ${
               location.pathname === '/' ? 'text-primary' : ''
             }`}
-            onClick={() => handleNavClick('home')}
+            onClick={() => setIsMenuOpen(false)}
           >
             {t.nav.home}
-          </button>
+          </Link>
           {navLinks.map((link) => (
-            <button 
+            <Link 
               key={link.page}
+              to={PAGE_TO_PATH[link.page]}
               className={`block w-full text-left text-lg font-medium hover:text-primary transition-colors ${
                 location.pathname === PAGE_TO_PATH[link.page] ? 'text-primary' : ''
               }`}
-              onClick={() => handleNavClick(link.page)}
+              onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </button>
+            </Link>
           ))}
-          <button 
+          <Link 
+            to="/contact"
             className="block w-full px-5 py-3 bg-primary text-gray-900 font-bold rounded-xl text-center shadow-lg" 
-            onClick={() => handleNavClick('contact')}
+            onClick={() => setIsMenuOpen(false)}
           >
-            {t.nav.getStarted}
-          </button>
+            {t.nav.consultation}
+          </Link>
         </div>
       )}
     </nav>

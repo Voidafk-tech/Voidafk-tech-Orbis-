@@ -1,11 +1,8 @@
 import React from 'react';
-import { Page, useLanguage } from './App';
+import { Link } from 'react-router-dom';
+import { useLanguage } from './App';
 
-interface HeroProps {
-  navigate: (page: Page) => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ navigate }) => {
+const Hero: React.FC = () => {
   const { t, lang } = useLanguage();
 
   return (
@@ -13,7 +10,7 @@ const Hero: React.FC<HeroProps> = ({ navigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest animate-bounce">
-            <span className="material-icons-outlined text-sm">payments</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
             {t.hero.badge}
           </div>
           
@@ -26,18 +23,18 @@ const Hero: React.FC<HeroProps> = ({ navigate }) => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button 
-              onClick={() => navigate('pricing')}
+            <Link 
+              to="/pricing"
               className="px-10 py-5 bg-primary text-gray-900 font-bold rounded-xl hover:scale-105 transition-transform text-lg shadow-lg shadow-primary/20"
             >
               {t.hero.primaryBtn}
-            </button>
-            <button 
-              onClick={() => navigate('contact')}
+            </Link>
+            <Link 
+              to="/contact"
               className="px-10 py-5 bg-gray-100 dark:bg-gray-800 font-bold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-lg"
             >
               {t.hero.secondaryBtn}
-            </button>
+            </Link>
           </div>
         </div>
       </div>

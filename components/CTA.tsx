@@ -1,11 +1,8 @@
 import React from 'react';
-import { Page, useLanguage } from './App';
+import { Link } from 'react-router-dom';
+import { useLanguage } from './App';
 
-interface CTAProps {
-  navigate: (page: Page) => void;
-}
-
-const CTA: React.FC<CTAProps> = ({ navigate }) => {
+const CTA: React.FC = () => {
   const { t } = useLanguage();
 
   return (
@@ -21,12 +18,12 @@ const CTA: React.FC<CTAProps> = ({ navigate }) => {
               {t.cta.subtitle}
             </p>
             <div className="flex justify-center">
-              <button 
-                onClick={() => navigate('contact')}
+              <Link 
+                to="/contact"
                 className="px-10 py-5 bg-primary text-gray-900 font-extrabold rounded-2xl hover:scale-105 transition-transform text-lg shadow-xl shadow-primary/20"
               >
                 {t.cta.btn}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

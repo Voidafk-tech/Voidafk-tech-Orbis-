@@ -17,9 +17,7 @@ const FAQ: React.FC = () => {
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 <span className="font-bold">{faq.q}</span>
-                <span className={`material-icons-outlined transition-transform duration-300 ${openIndex === idx ? 'rotate-180' : ''}`}>
-                  expand_more
-                </span>
+                <svg className={`w-6 h-6 transition-transform duration-300 ${openIndex === idx ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </button>
               {openIndex === idx && (
                 <div className="p-8 pt-8 text-gray-400 text-sm leading-relaxed border-t border-gray-100 dark:border-gray-800 bg-gray-50/30 dark:bg-gray-800/20">

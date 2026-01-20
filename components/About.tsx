@@ -1,11 +1,8 @@
 import React from 'react';
-import { Page, useLanguage } from './App';
+import { Link } from 'react-router-dom';
+import { useLanguage } from './App';
 
-interface AboutProps {
-  navigate: (page: Page) => void;
-}
-
-const About: React.FC<AboutProps> = ({ navigate }) => {
+const About: React.FC = () => {
   const { t } = useLanguage();
 
   return (
@@ -27,12 +24,12 @@ const About: React.FC<AboutProps> = ({ navigate }) => {
               </div>
             </div>
             
-            <button 
-              onClick={() => navigate('about')}
+            <Link 
+              to="/about"
               className="mt-4 px-8 py-4 bg-gray-900 dark:bg-white dark:text-gray-900 text-white rounded-xl font-bold hover:brightness-110 transition-all shadow-lg"
             >
               {t.about.learnMore}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
