@@ -10,7 +10,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ svg, title, description, features }) => (
-  <Link to="/services" className="group block p-8 bg-background-light dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 hover:border-primary/50 hover:shadow-xl transition-all duration-300 outline-none">
+  <Link to="/services" className="group block p-8 bg-gray-800 rounded-2xl border border-gray-700 hover:border-primary/50 hover:shadow-xl transition-all duration-300 outline-none">
     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
       {svg}
     </div>
@@ -54,7 +54,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-900/50" id="services">
+    <section className="py-24 bg-gray-900/50" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-display font-bold mb-4">{t.services.title}<span className="text-primary">{t.services.titleAccent}</span></h2>

@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   const { t } = useLanguage();
   
   return (
-    <footer className="bg-background-light dark:bg-background-dark border-t border-gray-100 dark:border-gray-800 pt-20 pb-10">
+    <footer className="bg-background-dark border-t border-gray-800 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2 space-y-6">
@@ -40,11 +40,11 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest">
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest">
           <p>© 2026 Orbis Accounting. {t.footer.rights}</p>
           <div className="flex gap-4">
             <span>Modern Lime Variant</span>
-            <span className="w-px h-3 bg-gray-200 dark:bg-gray-800"></span>
+            <span className="w-px h-3 bg-gray-800"></span>
             <span>v1.0.0</span>
           </div>
         </div>

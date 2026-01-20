@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,20 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons-Outlined" rel="stylesheet">
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&') 
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
     <script type="importmap">
 {
   "imports": {
@@ -47,7 +33,7 @@
           extend: {
             colors: {
               primary: "#82E05E",
-              "background-light": "#FFFFFF",
+              "background-light": "#0A0A0A",
               "background-dark": "#0A0A0A",
               gray: {
                 900: "#121212",
@@ -84,18 +70,22 @@
         line-height: var(--base-line-height);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background-color: #0A0A0A;
+        color: #F4F4F5;
       }
 
       .font-display {
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
 
+      /* Better Chinese typography */
       html[lang="zh"] .font-display,
       html[lang="zh"] body {
         font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "system-ui", sans-serif;
         letter-spacing: 0.01em;
       }
 
+      /* Fix for potentially weird line breaks in CJK */
       html[lang="zh"] p {
         word-break: break-all;
         text-align: justify;

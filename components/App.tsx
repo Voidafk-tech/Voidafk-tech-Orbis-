@@ -2,7 +2,6 @@ import React, { useState, useEffect, createContext, useContext } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ThemeToggle from './ThemeToggle';
 import Home from '../pages/Home';
 import ServicesPage from '../pages/ServicesPage';
 import ProcessPage from '../pages/ProcessPage';
@@ -55,39 +54,22 @@ const App: React.FC = () => {
     return 'en';
   });
 
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' || 
-             (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-    return false;
-  });
-
   useEffect(() => {
     localStorage.setItem('lang', lang);
     document.documentElement.setAttribute('lang', lang);
+    // Ensure dark class is present
+    document.documentElement.classList.add('dark');
   }, [lang]);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0 });
   }, [location.pathname]);
 
-  const toggleTheme = () => setIsDark(prev => !prev);
   const t = translations[lang];
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
-      <div className={`min-h-screen flex flex-col bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-300 ${lang === 'zh' ? 'font-zh tracking-tight' : 'font-sans'}`}>
+      <div className={`min-h-screen flex flex-col bg-background-dark text-gray-100 transition-colors duration-300 ${lang === 'zh' ? 'font-zh tracking-tight' : 'font-sans'}`}>
         <Navbar />
         <main className="flex-grow pt-20">
           <Routes>
@@ -104,7 +86,6 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
-        <ThemeToggle isDark={isDark} toggle={toggleTheme} />
       </div>
     </LanguageContext.Provider>
   );

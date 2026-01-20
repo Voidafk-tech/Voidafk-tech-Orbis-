@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+    <nav className="fixed w-full top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link 
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
                   key={link.page}
                   to={PAGE_TO_PATH[link.page]}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive ? 'text-primary underline underline-offset-4 decoration-2' : 'text-gray-600 dark:text-gray-300'
+                    isActive ? 'text-primary underline underline-offset-4 decoration-2' : 'text-gray-300'
                   }`}
                 >
                   {link.name}
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
             
             <button 
               onClick={toggleLanguage}
-              className="text-xs font-bold px-3 py-1.5 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors uppercase"
+              className="text-xs font-bold px-3 py-1.5 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors uppercase"
             >
               {lang === 'en' ? '中文' : 'EN'}
             </button>
@@ -79,13 +79,13 @@ const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center gap-4">
             <button 
               onClick={toggleLanguage}
-              className="text-xs font-bold px-2 py-1 border border-gray-200 dark:border-gray-700 rounded-md"
+              className="text-xs font-bold px-2 py-1 border border-gray-700 rounded-md"
             >
               {lang === 'en' ? '中文' : 'EN'}
             </button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-gray-600 dark:text-gray-300"
+              className="p-2 text-gray-300"
               aria-label="Toggle menu"
             >
               <span className="material-icons-outlined">
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background-light dark:bg-background-dark border-b border-gray-100 dark:border-gray-800 px-4 py-6 space-y-4 shadow-xl">
+        <div className="md:hidden bg-background-dark border-b border-gray-800 px-4 py-6 space-y-4 shadow-xl">
           <Link 
             to="/"
             className={`block w-full text-left text-lg font-medium hover:text-primary transition-colors ${
