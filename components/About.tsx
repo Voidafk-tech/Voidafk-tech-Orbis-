@@ -16,10 +16,10 @@ const About: React.FC = () => {
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-4 items-start text-left max-w-md mx-auto">
               <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                <span className="material-icons-outlined text-primary text-xs font-bold">done</span>
+                <span className="material-icons-outlined text-primary text-xs font-bold" aria-hidden="true">done</span>
               </div>
               <div>
-                <h4 className="font-bold">{t.about.proactiveTitle}</h4>
+                <h3 className="font-bold text-lg">{t.about.proactiveTitle}</h3>
                 <p className="text-sm text-gray-400">{t.about.proactiveDesc}</p>
               </div>
             </div>

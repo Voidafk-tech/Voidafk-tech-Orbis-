@@ -16,11 +16,12 @@ const Pricing: React.FC<PricingProps> = ({ showTitle = true }) => {
       period: t.pricing.mo,
       desc: t.pricing.monthly.desc,
       items: t.pricing.monthly.items,
+      featured: true
     },
     {
       name: t.pricing.catchup.name,
       price: t.pricing.catchup.price,
-      period: t.pricing.yr,
+      period: t.pricing.once || '',
       desc: t.pricing.catchup.desc,
       items: t.pricing.catchup.items,
     },
@@ -54,34 +55,50 @@ const Pricing: React.FC<PricingProps> = ({ showTitle = true }) => {
           </div>
         )}
 
-        {/* 2x2 Grid for Core Bookkeeping Plans */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+        {/* Core Bookkeeping Plans with Aggressive Green Pop Styling */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {coreTiers.map((tier, idx) => (
-            <div key={idx} className="relative bg-[#CFD9D6] dark:bg-gray-800/80 rounded-[2rem] overflow-hidden flex flex-col shadow-xl border border-black/5 dark:border-white/5 group hover:translate-y-[-4px] transition-all duration-300">
-              <div className="p-8 lg:p-12 flex flex-col flex-grow">
-                <h3 className="text-3xl font-display font-black text-[#1A1A1A] dark:text-white mb-6">
+            <div 
+              key={idx} 
+              className={`relative rounded-[2rem] overflow-hidden flex flex-col shadow-2xl transition-all duration-300 group hover:translate-y-[-4px] border-2 ${
+                tier.featured 
+                ? 'bg-primary/5 dark:bg-primary/10 border-primary ring-4 ring-primary/20 scale-105 z-10' 
+                : 'bg-white dark:bg-gray-800/80 border-primary/30 dark:border-primary/20'
+              }`}
+            >
+              {tier.featured && (
+                <div className="bg-primary text-gray-900 text-[10px] font-black uppercase tracking-widest py-1 px-4 absolute top-4 right-4 rounded-full">
+                  Most Popular
+                </div>
+              )}
+              <div className="p-8 flex flex-col flex-grow">
+                <h3 className="text-xl font-display font-black text-[#1A1A1A] dark:text-white mb-4">
                   {tier.name}
                 </h3>
                 
-                <p className="text-[#333333] dark:text-gray-300 mb-8 leading-relaxed text-lg font-sans font-medium">
+                <p className="text-[#333333] dark:text-gray-400 mb-6 leading-relaxed text-sm font-sans font-medium">
                   {tier.desc}
                 </p>
 
                 {tier.items && (
-                  <ul className="space-y-3 mb-10 ml-6 list-disc text-[#1A1A1A] dark:text-gray-200 font-sans text-sm lg:text-base">
+                  <ul className="space-y-3 mb-10 ml-6 list-disc text-[#1A1A1A] dark:text-gray-200 font-sans text-xs">
                     {tier.items.map((item, i) => (
-                      <li key={i} className="pl-2">{item}</li>
+                      <li key={i} className="pl-1">{item}</li>
                     ))}
                   </ul>
                 )}
 
-                <div className="mt-auto pt-8 border-t border-black/10 dark:border-white/10">
-                  <p className="text-xl font-display italic font-bold text-[#1A1A1A] dark:text-white mb-8">
-                    {t.pricing.startingAt} {t.pricing.just && `${t.pricing.just} `}<span className="text-2xl">${tier.price}</span> {tier.period}
+                <div className="mt-auto pt-6 border-t border-primary/20 dark:border-white/10">
+                  <p className="text-lg font-display italic font-bold text-[#1A1A1A] dark:text-white mb-6">
+                    {t.pricing.startingAt} <span className="text-2xl text-primary">${tier.price}</span> {tier.period}
                   </p>
                   <Link 
                     to="/contact"
-                    className="inline-block px-10 py-3.5 bg-primary text-gray-900 font-display font-black rounded-full hover:brightness-110 transition-all border border-black/10 uppercase tracking-wider text-sm shadow-md"
+                    className={`inline-block w-full text-center px-6 py-3 font-display font-black rounded-full transition-all border-2 uppercase tracking-wider text-xs shadow-md ${
+                      tier.featured
+                      ? 'bg-primary text-gray-900 border-primary hover:brightness-110'
+                      : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-primary/50 hover:bg-primary hover:text-gray-900 hover:border-primary'
+                    }`}
                   >
                     {t.pricing.cta}
                   </Link>
@@ -99,21 +116,46 @@ const Pricing: React.FC<PricingProps> = ({ showTitle = true }) => {
           </p>
         </div>
 
-        {/* 2x2 Grid for Additional Services - Box Style similar to Core Plans */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16">
+        {/* 2x2 Grid + Launchpad Card for Additional Services */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-16">
+          {/* Business Launchpad Card - Unique CTA 'Contact' */}
+          <div className="relative bg-[#CFD9D6] dark:bg-gray-800/80 rounded-[2rem] overflow-hidden flex flex-col shadow-xl border border-black/5 dark:border-white/5 group hover:translate-y-[-4px] transition-all duration-300">
+            <div className="p-8 lg:p-12 flex flex-col flex-grow">
+              <h3 className="text-2xl font-display font-black text-[#1A1A1A] dark:text-white mb-4">
+                {t.pricing.launchpad.name}
+              </h3>
+              <p className="text-[#333333] dark:text-gray-300 mb-8 leading-relaxed text-lg font-sans font-medium">
+                {t.pricing.launchpad.desc}
+              </p>
+              <ul className="space-y-2 mb-10 ml-6 list-disc text-[#1A1A1A] dark:text-gray-200 font-sans text-sm">
+                {t.pricing.launchpad.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+              <div className="mt-auto pt-8 border-t border-black/10 dark:border-white/10">
+                <p className="text-lg font-display italic font-bold text-[#1A1A1A] dark:text-white mb-6">
+                  {t.pricing.startingAt} <span className="text-2xl text-primary">${t.pricing.launchpad.price}</span> {t.pricing.once}
+                </p>
+                <Link 
+                  to="/contact"
+                  className="inline-block px-10 py-3.5 bg-gray-900 dark:bg-gray-700 text-white font-display font-black rounded-full hover:brightness-110 transition-all border border-black/10 uppercase tracking-wider text-sm shadow-md"
+                >
+                  {t.pricing.launchpad.cta}
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Map rest of additional services */}
           {t.pricing.additional.map((service, idx) => (
             <div key={idx} className="relative bg-[#CFD9D6] dark:bg-gray-800/80 rounded-[2rem] overflow-hidden flex flex-col shadow-xl border border-black/5 dark:border-white/5 group hover:translate-y-[-4px] transition-all duration-300">
               <div className="p-8 lg:p-12 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-6">
-                  <h3 className="text-2xl font-display font-black text-[#1A1A1A] dark:text-white">
-                    {service.title}
-                  </h3>
-                </div>
-                
+                <h3 className="text-2xl font-display font-black text-[#1A1A1A] dark:text-white mb-4">
+                  {service.title}
+                </h3>
                 <p className="text-[#333333] dark:text-gray-300 mb-8 leading-relaxed text-lg font-sans font-medium">
                   {service.desc}
                 </p>
-
                 <div className="mt-auto pt-8 border-t border-black/10 dark:border-white/10">
                   <Link 
                     to="/contact"

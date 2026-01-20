@@ -10,7 +10,11 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ svg, title, description, features }) => (
-  <Link to="/services" className="group block p-8 bg-gray-800 rounded-2xl border border-gray-700 hover:border-primary/50 hover:shadow-xl transition-all duration-300 outline-none">
+  <Link 
+    to="/services" 
+    aria-label={`Learn more about our ${title} services`}
+    className="group block p-8 bg-gray-800 rounded-2xl border border-gray-700 hover:border-primary/50 hover:shadow-xl transition-all duration-300 outline-none"
+  >
     <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
       {svg}
     </div>
@@ -19,7 +23,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ svg, title, description, feat
     <ul className="space-y-2">
       {features.map((feature, idx) => (
         <li key={idx} className="flex items-center gap-2 text-sm text-gray-400">
-          <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+          <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           {feature}

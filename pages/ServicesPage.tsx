@@ -15,21 +15,24 @@ const ServicesPage: React.FC = () => {
           </p>
         </header>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {t.services.deep.map((s, idx) => (
-            <div key={idx} className="bg-white dark:bg-gray-800 p-10 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-lg">
-              <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">{s.details}</p>
-              <ul className="space-y-3">
+            <div key={idx} className="bg-white dark:bg-gray-800 p-8 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-lg flex flex-col">
+              <h3 className="text-xl font-bold mb-3">{s.title}</h3>
+              <p className="text-sm text-gray-400 mb-6 leading-relaxed flex-grow">{s.details}</p>
+              <ul className="space-y-3 mb-8">
                 {s.items.map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-medium">
-                    <svg className="w-5 h-5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <li key={i} className="flex items-center gap-3 text-xs font-medium">
+                    <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
                   </li>
                 ))}
               </ul>
+              <Link to="/contact" className="text-primary text-xs font-black uppercase tracking-widest hover:underline">
+                {t.nav.consultation} &rarr;
+              </Link>
             </div>
           ))}
         </div>

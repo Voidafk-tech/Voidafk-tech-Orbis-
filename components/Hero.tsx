@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
     <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest animate-bounce">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest animate-pulse">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
             {t.hero.badge}
           </div>
@@ -19,7 +19,9 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="text-xl text-gray-400 leading-relaxed mx-auto max-w-2xl">
-            {t.hero.subtitle}
+            {t.hero.subtitle_part1}
+            <span className="text-primary font-bold">{t.hero.subtitle_price}</span>
+            {t.hero.subtitle_part2}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
