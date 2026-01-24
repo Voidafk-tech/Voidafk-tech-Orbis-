@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <link rel="icon" type="image/png" href="./OBS.png" sizes="144x144">
-    <link rel="apple-touch-icon" href="/OBS.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orbis Accounting | Professional Vancouver Bookkeeping & Remote Staff Accountants</title>
-    <meta name="description" content="Orbis Accounting provides cost-effective remote staff accountant services in Vancouver. Specializing in full-cycle bookkeeping, payroll, and WCB compliance for BC businesses." />
-    <meta name="keywords" content="Vancouver Bookkeeping, Remote Staff Accountant, Sage50, QuickBooks Online, BC WCB Compliance, Fractional Accounting, Vancouver Small Business Payroll" />
+    <title>Remote Bookkeeping & Fractional Staff Accounting | Orbis Accounting</title>
+    <meta name="description" content="Orbis Accounting provides expert remote bookkeeping and fractional staff accounting for businesses. Specialized Sage50 & QuickBooks solutions for your business financials." />
+    <meta name="keywords" content="Remote Bookkeeping, Staff Accountant, Sage50, QuickBooks Online, Compliance, Fractional Accounting, Small Business Payroll, Virtual Accountant" />
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Orbis Accounting | Professional Vancouver Bookkeeping" />
-    <meta property="og:description" content="Save on overhead with senior remote staff accountants. Expert bookkeeping, AR/AP, and payroll for Vancouver businesses." />
+    <meta property="og:title" content="Remote Bookkeeping & Fractional Accounting | Orbis Accounting" />
+    <meta property="og:description" content="Expert remote staff accountants. Specialized bookkeeping, AR/AP, and payroll services for modern businesses." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://orbisaccounting.ca" />
+    <link rel="canonical" href="https://orbisaccounting.ca" />
     
     <!-- Structured Data -->
-   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AccountingService",
-  "name": "Orbis Accounting",
-  "image": "https://orbisaccounting.ca/OBS.png",
-  "logo": "https://orbisaccounting.ca/OBS.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Vancouver",
-    "addressRegion": "BC",
-    "addressCountry": "CA"
-  },
-  "url": "https://orbisaccounting.ca",
-  "telephone": "+16042037799",
-  "priceRange": "$$",
-  "description": "Professional remote bookkeeping and staff accounting for Vancouver B2B enterprises. Expert in Sage50 and QuickBooks Online.",
-  "openingHours": "Mo-Fr 09:00-17:00",
-  "areaServed": "Vancouver, BC",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Accounting Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Full-Cycle Bookkeeping"
-        }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AccountingService",
+      "name": "Orbis Accounting",
+      "url": "https://orbisaccounting.ca",
+      "logo": "https://orbisaccounting.ca/logo.png",
+      "priceRange": "$$",
+      "description": "Professional remote bookkeeping and staff accounting for modern B2B enterprises. Specialized in Sage50 and QuickBooks Online.",
+      "openingHours": "Mo-Fr 09:00-17:00",
+      "telephone": "+1-604-203-7799",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Canada"
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Payroll and T4 Filing"
-        }
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Accounting and Bookkeeping Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Remote Full-Cycle Bookkeeping"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Payroll Processing and T4 Filing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Catchup and Cleanup Bookkeeping"
+            }
+          }
+        ]
       }
-    ]
-  }
-}
-</script>
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons-Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="importmap">
 {
   "imports": {
@@ -132,22 +134,25 @@
         font-family: 'Plus Jakarta Sans', sans-serif;
       }
 
-      /* Better Chinese typography */
-      html[lang="zh"] .font-display,
-      html[lang="zh"] body {
-        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "system-ui", sans-serif;
-        letter-spacing: 0.01em;
-      }
-
-      /* Fix for potentially weird line breaks in CJK */
+      /* Fix for potentially weird line breaks in CJK and force centering */
       html[lang="zh"] p {
         word-break: break-all;
-        text-align: justify;
+      }
+
+      html[lang="zh"] .text-center {
+        text-align: center !important;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-family: 'Material Symbols Outlined' !important;
       }
     </style>
-  </head>
+  <link rel="stylesheet" href="/index.css">
+</head>
   <body>
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
-  </body>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>
