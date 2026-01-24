@@ -63,7 +63,21 @@ const App: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0 });
-  }, [location.pathname]);
+    
+    // Update document title for SEO on route changes
+    const baseTitle = lang === 'en' ? 'Orbis Accounting' : 'Orbis 会计';
+    const titles: Record<string, string> = {
+      '/': lang === 'en' ? 'Remote Bookkeeping & Fractional Accounting' : '远程簿记与专业会计服务',
+      '/services': lang === 'en' ? 'Bookkeeping & Payroll Services' : '簿记与薪资服务',
+      '/pricing': lang === 'en' ? 'Transparent Accounting Plans' : '透明的会计方案',
+      '/process': lang === 'en' ? 'Our Onboarding Process' : '我们的入职流程',
+      '/contact': lang === 'en' ? 'Free Accounting Quote' : '获取免费报价',
+      '/about': lang === 'en' ? 'About Orbis Remote Experts' : '关于 Orbis 远程专家',
+      '/growth-strategy': lang === 'en' ? 'Financial Strategy for Scaling' : '扩展业务的财务战略',
+    };
+    
+    document.title = `${titles[location.pathname] || baseTitle} | ${baseTitle}`;
+  }, [location.pathname, lang]);
 
   const t = translations[lang];
 

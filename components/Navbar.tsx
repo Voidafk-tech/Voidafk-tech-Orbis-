@@ -21,10 +21,10 @@ const Navbar: React.FC = () => {
   const { lang, setLang, t } = useLanguage();
   const location = useLocation();
 
-  const navLinks: { name: string; page: Page }[] = [
-    { name: t.nav.services, page: 'services' },
-    { name: t.nav.pricing, page: 'pricing' },
-    { name: t.nav.process, page: 'process' },
+  const navLinks: { name: string; page: Page; title: string }[] = [
+    { name: t.nav.services, page: 'services', title: lang === 'en' ? 'Our Bookkeeping Services' : '我们的会计服务' },
+    { name: t.nav.pricing, page: 'pricing', title: lang === 'en' ? 'Pricing & Plans' : '价格与方案' },
+    { name: t.nav.process, page: 'process', title: lang === 'en' ? 'Our Streamlined Process' : '服务流程' },
   ];
 
   const toggleLanguage = () => {
@@ -37,10 +37,12 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           <Link 
             to="/"
-            className="flex items-center gap-2 group outline-none" 
-            aria-label="Home"
+            className="flex items-center gap-3 group outline-none" 
+            aria-label="Orbis Accounting Home"
+            title="Orbis Accounting Home"
           >
-            <LogoGraphic className="h-12 w-12 group-hover:scale-110 transition-transform" />
+            <LogoGraphic className="h-10 w-10 group-hover:scale-110 transition-transform" />
+            <span className="font-display font-black text-white text-xl tracking-tighter hidden sm:block">ORBIS</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -51,6 +53,7 @@ const Navbar: React.FC = () => {
                 <Link 
                   key={link.page}
                   to={PAGE_TO_PATH[link.page]}
+                  title={link.title}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
                     isActive ? 'text-primary underline underline-offset-4 decoration-2' : 'text-gray-300'
                   }`}
@@ -62,6 +65,7 @@ const Navbar: React.FC = () => {
             
             <button 
               onClick={toggleLanguage}
+              title={lang === 'en' ? 'Switch to Chinese' : '切换到英文'}
               className="text-xs font-bold px-3 py-1.5 border border-gray-700 rounded-lg hover:bg-gray-800 transition-colors uppercase"
             >
               {lang === 'en' ? '中文' : 'EN'}
@@ -69,6 +73,7 @@ const Navbar: React.FC = () => {
 
             <Link 
               to="/contact"
+              title="Get a Free Accounting Quote"
               className="px-5 py-2.5 bg-primary text-gray-900 font-bold rounded-full hover:brightness-110 transition-all text-sm shadow-sm"
             >
               {t.nav.consultation}
@@ -88,7 +93,7 @@ const Navbar: React.FC = () => {
               className="p-2 text-gray-300"
               aria-label="Toggle menu"
             >
-              <span className="material-icons-outlined">
+              <span className="material-symbols-outlined">
                 {isMenuOpen ? 'close' : 'menu'}
               </span>
             </button>

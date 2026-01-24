@@ -14,7 +14,7 @@ const CTA: React.FC = () => {
             <h2 className="text-4xl lg:text-5xl font-display font-bold text-white max-w-2xl mx-auto">
               {t.cta.title}
             </h2>
-            <p className="text-gray-400 max-w-lg mx-auto">
+            <p className="text-gray-400 max-w-lg mx-auto text-center">
               {t.cta.subtitle}
             </p>
             <div className="flex justify-center">
