@@ -16,49 +16,87 @@
     
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AccountingService",
-      "name": "Orbis Accounting",
-      "url": "https://www.orbisaccounting.ca",
-      "logo": "https://www.orbisaccounting.ca/OBS.png",
-      "priceRange": "$$",
-      "description": "Professional remote bookkeeping and staff accounting for modern B2B enterprises. Specialized in Sage50 and QuickBooks Online.",
-      "openingHours": "Mo-Fr 09:00-17:00",
-      "telephone": "+1-604-203-7799",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "Canada"
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "Orbis Accounting",
+  "image": "https://www.orbisaccounting.ca/logo.png",
+  "@id": "https://www.orbisaccounting.ca",
+  "url": "https://www.orbisaccounting.ca",
+  "telephone": "604-203-7799",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "333 Seymour St",
+    "addressLocality": "Vancouver",
+    "addressRegion": "BC",
+    "postalCode": "V6B 1P1",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.2852,
+    "longitude": -123.1118
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "British Columbia"
+  },
+  "priceRange": "$$",
+  "description": "Orbis Accounting provides professional remote Staff Accountant expertise for small business owners across British Columbia. Specializing in full-cycle bookkeeping, payroll, and WCB compliance, we offer a high-tier, cost-effective alternative to in-house hires. Optimize your cash flow with remote solutions for AR/AP management and CRA tax readiness, designed to scale with your business.",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Orbis Accounting Service Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Monthly Bookkeeping",
+          "description": "Recurring monthly management including AR/AP, bank reconciliations, and PST/GST/HST filing."
+        },
+        "price": "399.00",
+        "priceCurrency": "CAD"
       },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Accounting and Bookkeeping Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Remote Full-Cycle Bookkeeping"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Payroll Processing and T4 Filing"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Catchup and Cleanup Bookkeeping"
-            }
-          }
-        ]
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Catch-up Bookkeeping",
+          "description": "One-time historical ledger cleanup and data restoration to get your records back in order."
+        },
+        "price": "1200.00",
+        "priceCurrency": "CAD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Quarterly Review",
+          "description": "Periodic upkeep for smaller businesses needing GST/PST compliance and financial snapshots."
+        },
+        "price": "900.00",
+        "priceCurrency": "CAD"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Year-end Prep",
+          "description": "Annual account reconciliation and tax package preparation for corporate accountants."
+        },
+        "price": "1800.00",
+        "priceCurrency": "CAD"
       }
-    }
-    </script>
+    ]
+  }
+}
+</script>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
