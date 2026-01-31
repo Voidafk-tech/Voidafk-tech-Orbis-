@@ -466,8 +466,8 @@ export const translations = {
       placeholderName: '张先生/女士', 
       placeholderEmail: 'name@company.ca', 
       placeholderMessage: '请描述您的财务挑战...',
-      phone: '604-926-4950',
-      phoneUrl: 'tel:6049264950',
+      phone: '604-203-7799',
+      phoneUrl: 'tel:6042037799',
       wechat: 'WeChat ID: Online_Bookkeeper'
     },
     process: { title: 'Orbis ', titleAccent: '服务流程', subtitle: '通过四个阶段，将您的业务从账目混乱引导至可预测的数据驱动增长。', learnMore: '从杂乱分类账到清晰财务战略。', learnMoreLink: '了解详情 →', actionBtn: '立即开始', steps: [{num: "01", title: "审计评估", desc: "分析财务账目，建立可靠的报告基准。", icon: "fact_check"}, {num: "02", title: "系统集成", desc: "过渡到云端会计，实现现金流实时监控。", icon: "cloud_upload"}, {num: "03", title: "流程自动化", desc: "设置数字记录采集，消除人工簿记错误。", icon: "bolt"}, {num: "04", title: "策略评审", desc: "根据您的增长目标进行每月绩效评估。", icon: "query_stats"}], homeSteps: [{title: '探索发现', description: '分析现有工作流', icon: 'search'}, {title: '系统集成', description: '同步财务系统', icon: 'sync'}, {title: '流程优化', description: '实现周期自动化', icon: 'trending_up'}, {title: '规模扩展', description: '驱动业务持续增长', icon: 'rocket_launch'}] },
